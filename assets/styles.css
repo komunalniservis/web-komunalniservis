@@ -1,0 +1,823 @@
+/*
+ * STYLES.CSS – HLAVNÍ STYLY WEBU KOMUNÁLNÍ SERVIS
+ * - Desktop layout (hlavička, navigace, hero, obsah, patička)
+ * - Tablet režim (1300px–701px): hamburger menu + přeuspořádání
+ * - Mobilní režim (<=700px): full responsive layout
+ * - Podpora obrázků/galerie a čitelnosti tabulek na menších displejích
+ */
+
+/* --- GLOBÁLNÍ RESET A POJISTKY --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    overflow-x: hidden; /* Zabrání vodorovnému posunu na úrovni okna */
+    width: 100%;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #3a6620;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Klíčové pro mobily (Samsung/Xiaomi) */
+    width: 100%;
+    position: relative;
+}
+
+/* Oprava pro obrázky, aby nikdy nepřetekly šířku displeje */
+img, video, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- HLAVIČKA (TOP BAR) --- */
+.top-bar {
+    background-color: #3a6620;
+    padding: 8px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; /* Použito místo width 100% pro lepší stabilitu */
+    z-index: 100;
+    transition: background-color 0.25s ease;
+}
+
+.top-bar.scrolled {
+    background-color: #3a6620;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* --- LOGO SEKCE (OPRAVENO) --- */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    /* Odstraněn negativní margin, který způsoboval posun doprava */
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.company-name {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- NAVIGACE (OPRAVENO) --- */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 230px;    /* Odstraněn margin-right s výpočtem calc, který tlačil menu mimo displej */
+    justify-content: flex-end;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 12px;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    display: block;
+}
+
+.navbar a:hover {
+    color: #a8d5ba;
+    border-bottom-color: #a8d5ba;
+}
+
+/* --- ELEMENTY SKRYTÉ NA DESKTOPU --- */
+.menu-toggle, .mobile-contact-btn {
+    display: none;
+}
+
+/* --- HLAVIČKA - KONTAKT A SEARCH --- */
+.header-phone {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.phone-number {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+/* --- DROPDOWN MENU --- */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #3a6620;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    border-radius: 4px;
+    min-width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    color: white;
+    border-bottom: none;
+}
+
+/* --- HLAVNÍ OBSAH --- */
+main {
+    flex: 1;
+    margin-top: 82px;
+}
+
+.hero-section {
+    position: relative;
+    min-height: 70vh;
+    overflow: hidden;
+    background-color: #3a6620;
+}
+
+.carousel-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+.hero-content {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 700px;
+    color: white;
+    text-align: center;
+}
+
+.hero-text-overlay h2 {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+/* --- SEKCE OBSAHU --- */
+.content-section {
+    background: white;
+    padding: 50px 20px;
+}
+
+.content-container {
+    max-width: none;
+    margin: 0 220px;
+    overflow: auto;
+}
+
+.mobile-only-bg-image,
+.mobile-only-image {
+    display: none;
+}
+
+/* Galerie overlay */
+.mobile-gallery-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mobile-gallery-overlay.open {
+    display: flex;
+}
+
+.mobile-gallery-image {
+    max-width: min(92vw, 1200px);
+    max-height: 82vh;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.mobile-gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.mobile-gallery-prev {
+    left: 18px;
+}
+
+.mobile-gallery-next {
+    right: 18px;
+}
+
+.mobile-gallery-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.22);
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.mobile-gallery-nav:hover,
+.mobile-gallery-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@media (hover: none), (pointer: coarse) {
+    .navbar a:hover,
+    .dropdown > a:hover {
+        color: white;
+        border-bottom-color: transparent;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        max-height: 0;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .mobile-gallery-nav {
+        width: 44px;
+        height: 44px;
+        font-size: 30px;
+    }
+
+    .mobile-gallery-prev {
+        left: 10px;
+    }
+
+    .mobile-gallery-next {
+        right: 10px;
+    }
+
+    .mobile-gallery-image {
+        max-width: 92vw;
+    }
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #1a3009;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+/* --- TABLET MENU (desktop vzhled + hamburger) --- */
+@media (max-width: 1300px) and (min-width: 701px) {
+    main {
+        margin-top: 58px;
+    }
+
+    .carousel-img {
+        object-position: center 20% !important;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        justify-content: space-between;
+    }
+
+    .top-bar .logo {
+        width: 46px !important;
+        height: 46px !important;
+        padding: 7px !important;
+    }
+
+    .top-bar .company-name {
+        font-size: 14px !important;
+        letter-spacing: 0.4px;
+    }
+
+    .header-phone {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        background: transparent !important;
+        position: relative;
+        border: none !important;
+        border-radius: 0;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        box-shadow: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle:focus,
+    .menu-toggle:focus-visible,
+    .menu-toggle:active,
+    .menu-toggle:hover {
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle::before {
+        content: '';
+        width: 20px;
+        height: 2.5px;
+        background: white;
+        box-shadow: 0 -6px 0 white, 0 6px 0 white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .mobile-contact-btn {
+        display: inline-flex;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: auto;
+        padding: 0 10px;
+    }
+
+    .mobile-hide-contact {
+        display: none !important;
+    }
+
+    .navbar {
+        position: absolute;
+        right: 15px;
+        top: 100%;
+        width: 280px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        flex-direction: column;
+        z-index: 200;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar.mobile-open {
+        max-height: 80vh;
+        opacity: 1;
+        overflow-y: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: stretch !important;
+        background: #3a6620;
+        padding: 15px;
+        border-radius: 0;
+        width: 100%;
+        gap: 4px;
+    }
+
+    .navbar ul > li {
+        width: 100%;
+    }
+
+    .navbar > ul > li > a {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        font-weight: 700;
+    }
+
+    .dropdown-menu a {
+        font-weight: 400;
+    }
+
+    .dropdown > a {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 0 !important;
+    }
+
+    .navbar a:hover,
+    .dropdown > a:hover,
+    .dropdown-menu a:hover {
+        color: white;
+        border-bottom-color: transparent;
+    }
+
+    .dropdown > a:focus-visible {
+        color: #a8d5ba;
+        border-bottom-color: #a8d5ba;
+    }
+
+    .dropdown.mobile-open > a {
+        color: #a8d5ba;
+        border-bottom-color: #a8d5ba;
+    }
+
+    .dropdown > a span {
+        margin-left: auto !important;
+        transition: transform 0.22s ease;
+    }
+
+    .dropdown.mobile-open > a span {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: flex !important;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        min-width: 0;
+        margin-top: 0;
+        background: rgba(0, 0, 0, 0.12);
+        box-shadow: none;
+        pointer-events: none;
+    }
+
+    .dropdown.mobile-open > .dropdown-menu {
+        opacity: 1;
+        max-height: 500px;
+        margin-top: 0;
+        pointer-events: auto;
+    }
+
+    .content-container {
+        margin: 0 60px;
+        border-radius: 0 0 5px 5px !important;
+    }
+
+    .desktop-float-image {
+        display: none !important;
+    }
+
+    .mobile-only-bg-image {
+        display: block !important;
+        clear: both;
+        margin: 20px auto;
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+    .tablet-hide-image {
+        display: none !important;
+    }
+}
+
+/* --- DESKTOP (1301px+) --- */
+@media (min-width: 1301px) {
+    .dropdown:hover .dropdown-menu {
+        max-height: 1000px;
+        opacity: 1;
+    }
+}
+
+/* --- RESPONSIVE DESIGN (MOBILY) --- */
+@media (max-width: 700px) {
+    main {
+        margin-top: 72px;
+    }
+
+    .hero-section,
+    .hero-content {
+        min-height: 48vh;
+    }
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        justify-content: space-between;
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .top-bar .company-name {
+        font-size: 13px !important;
+        letter-spacing: 0.4px;
+    }
+
+    .header-phone {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        background: transparent !important;
+        position: relative;
+        border: none !important;
+        border-radius: 0;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        box-shadow: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle:focus,
+    .menu-toggle:focus-visible,
+    .menu-toggle:active,
+    .menu-toggle:hover {
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle::before {
+        content: '';
+        width: 20px;
+        height: 2.5px;
+        background: white;
+        box-shadow: 0 -6px 0 white, 0 6px 0 white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .mobile-contact-btn {
+        display: inline-flex;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: auto;
+        padding: 0 10px;
+    }
+
+    .mobile-hide-contact {
+        display: none !important;
+    }
+
+    /* Mobilní menu vysouvací */
+    .navbar {
+        position: absolute;
+        right: 15px;
+        top: 100%;
+        width: 280px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        flex-direction: column;
+        z-index: 200;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .navbar.mobile-open {
+        max-height: 80vh;
+        opacity: 1;
+        overflow-y: auto;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: stretch !important;
+        background: #3a6620;
+        padding: 15px;
+        border-radius: 0;
+        width: 100%;
+        gap: 4px;
+    }
+
+    .navbar ul > li {
+        width: 100%;
+    }
+
+    .navbar > ul > li > a {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        font-weight: 700;
+    }
+
+    .dropdown-menu a {
+        font-weight: 400;
+    }
+
+    .dropdown > a {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        gap: 0 !important;
+    }
+
+    .navbar a:hover,
+    .dropdown > a:hover,
+    .dropdown-menu a:hover {
+        color: white;
+        border-bottom-color: transparent;
+    }
+
+    .dropdown > a:focus-visible {
+        color: #a8d5ba;
+        border-bottom-color: #a8d5ba;
+    }
+
+    .dropdown.mobile-open > a {
+        color: #a8d5ba;
+        border-bottom-color: #a8d5ba;
+    }
+
+    .dropdown > a span {
+        margin-left: auto !important;
+        transition: transform 0.22s ease;
+    }
+
+    .dropdown.mobile-open > a span {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: flex !important;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        min-width: 0;
+        margin-top: 0;
+        background: rgba(0, 0, 0, 0.12);
+        box-shadow: none;
+        pointer-events: none;
+    }
+
+    .dropdown.mobile-open > .dropdown-menu {
+        opacity: 1;
+        max-height: 500px;
+        margin-top: 0;
+        pointer-events: auto;
+    }
+
+    .hero-text-overlay h2 {
+        font-size: 32px;
+    }
+
+    .hero-text-overlay {
+        padding: 22px;
+    }
+    
+    /* Zabránění dlouhým slovům rozbít layout */
+    .content-container p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .content-container,
+    .content-section {
+        background: #fff !important;
+        opacity: 1 !important;
+    }
+
+    .content-section {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .content-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 20px 16px !important;
+        border-radius: 0 !important;
+    }
+
+    .content-container table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-only-bg-image,
+    .mobile-only-image {
+        display: block !important;
+        width: 100%;
+        max-width: 100%;
+        margin: 16px 0 18px;
+        border-radius: 0;
+        cursor: auto !important;
+        pointer-events: auto !important;
+    }
+}
