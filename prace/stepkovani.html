@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7KPS3735Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-T7KPS3735Z');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Štěpkování - Komunální Servis</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    <script src="../assets/adaptive-mobile-spacing.js" defer></script>
+    <!-- POZNÁMKA: Detail služby „Štěpkování“ (popis činností a použití techniky). -->
+    <style>
+        .content-container p {
+            font-size: 1.08em;
+            margin-bottom: 12px;
+        }
+
+        .content-container h2 {
+            font-size: 2.08em;
+        }
+
+        .stepkovani-gallery {
+            position: relative;
+            float: right;
+            width: 470px;
+            max-width: 100%;
+            margin: 0 0 12px 24px;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .stepkovani-gallery img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            cursor: zoom-in;
+        }
+
+        .stepkovani-gallery-button {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.52);
+            color: #fff;
+            font-size: 34px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .stepkovani-gallery-button-prev {
+            left: 14px;
+            right: auto;
+        }
+
+        .stepkovani-gallery-button:hover {
+            background: rgba(0, 0, 0, 0.66);
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .stepkovani-gallery-button-prev:hover {
+            transform: translateY(-50%) scale(1.04);
+        }
+
+        .stepkovani-gallery-button:focus-visible {
+            outline: 3px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 1300px) and (min-width: 701px) {
+            .stepkovani-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .stepkovani-gallery {
+                float: none;
+                width: 100%;
+                max-width: 430px;
+                margin: 18px auto 0;
+                border-radius: 24px;
+                order: 20;
+            }
+
+            .stepkovani-clear {
+                display: none;
+            }
+
+            .stepkovani-gallery img {
+                border-radius: 24px;
+            }
+
+            .stepkovani-gallery-button {
+                width: 38px;
+                height: 38px;
+                font-size: 24px;
+                right: 10px;
+            }
+
+            .stepkovani-gallery-button-prev {
+                left: 10px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            body {
+                background: none !important;
+                background-color: #ffffff !important;
+            }
+
+            .desktop-float-image {
+                display: none !important;
+            }
+
+            .stepkovani-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .stepkovani-gallery {
+                float: none;
+                width: 100%;
+                margin: 20px 0 0 0;
+                border-radius: 10px;
+                order: 20;
+            }
+
+            .stepkovani-clear {
+                display: none;
+            }
+
+            .stepkovani-gallery img {
+                border-radius: 10px;
+            }
+
+            .stepkovani-gallery-button {
+                width: 64px;
+                height: 64px;
+                font-size: 44px;
+            }
+
+            .mobile-only-bg-image {
+                display: block !important;
+                width: 100%;
+                margin: 20px 0;
+                border-radius: 10px;
+            }
+        }
+
+
+        .stepkovani-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .stepkovani-lightbox.open {
+            display: flex;
+        }
+
+        .stepkovani-lightbox-image {
+            max-width: min(92vw, 1200px);
+            max-height: 82vh;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .stepkovani-lightbox-close,
+        .stepkovani-lightbox-nav {
+            position: absolute;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .stepkovani-lightbox-close {
+            top: 14px;
+            right: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            font-size: 22px;
+        }
+
+        .stepkovani-lightbox-nav {
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.22);
+            font-size: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stepkovani-lightbox-prev {
+            left: 16px;
+        }
+
+        .stepkovani-lightbox-next {
+            right: 16px;
+        }
+
+        @media (max-width: 700px) {
+            .stepkovani-lightbox-nav {
+                width: 48px;
+                height: 48px;
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body style="background: url('../assets/stepkovani_1.jpg') center center / cover no-repeat fixed;">
+    <!-- HLAVIČKA: logo + navigace -->
+    <header class="top-bar">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <a href="../index.html" aria-label="Hlavní stránka">
+                        <img src="../assets/logo.png" alt="Logo" class="logo-img">
+                    </a>
+                </div>
+                <h1 class="company-name"><a href="../index.html" style="color: inherit; text-decoration: none;">komunální servis</a></h1>
+                <div class="header-phone">
+                    <a href="tel:+420602504964" class="phone-number">Tel: 602 504 964</a>
+                </div>
+            </div>
+            <a href="../contact.html" class="mobile-contact-btn">Kontakt</a>
+            <button class="menu-toggle" aria-label="Otevřít menu" aria-expanded="false"></button>
+            <nav class="navbar">
+                <ul style="list-style: none; margin: 0; margin-right: 0; padding: 0; display: flex; align-items: center;">
+                    <li><a href="../index.html#about-us" style="padding: 10px 15px; text-decoration: none; display: block;">O nás</a></li>
+                    <li class="dropdown" style="position: relative;">
+                        <a href="#" onclick="return false" style="padding: 10px 15px; text-decoration: none; display: flex; align-items: center; gap: 5px;">Práce <span style="font-size: 18px; opacity: 0.95; display: flex; align-items: center;">▾</span></a>
+                        <ul class="dropdown-menu" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0;">
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="prace_s_malotraktorem.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Práce s malotraktorem<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="seceni_a_mulcovani.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Sekání a mulčování<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="rotovace_a_vertikutace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Rotovace a vertikutace<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="stepkovani.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Štěpkování<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="zahradnicke_a_sadarske_prace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Zahradnické a sadařské práce<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="malirske_prace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Malířské práce<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" style="position: relative;">
+                        <a href="#" onclick="return false" style="padding: 10px 15px; text-decoration: none; display: flex; align-items: center; gap: 5px;">Úklidy a údržba <span style="font-size: 18px; opacity: 0.95; display: flex; align-items: center;">▾</span></a>
+                        <ul class="dropdown-menu" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0;">
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="uklidy_a_vyklizeni.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Úklidy a vyklízení<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="uklid_snehu.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Úklid sněhu<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                            <li style="margin: 4px; padding: 0px;">
+                                <a href="komplexni_udrzba_firemnich_arealu.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Komplexní údržba firemních areálů<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mobile-hide-contact"><a href="../contact.html" style="padding: 10px 15px; text-decoration: none; display: block;">Kontakt</a></li>
+                </ul>
+
+            </nav>
+        </div>
+    </header>
+
+    <!-- HLAVNÍ OBSAH STRÁNKY -->
+    <main>
+        <section class="content-section" style="margin-top: 0; padding-top: 0; background: transparent;">
+            <div class="content-container stepkovani-content" style="background: rgba(255, 255, 255, 0.80); padding: 28px 32px; border-radius: 5px;">
+                <h2 style="font-weight: 700;">Štěpkování</h2>
+                <p style="font-size: 1.4em; font-weight: bold;">Štěpkování větví a dřevního odpadu</p>
+                <p></p>
+                <div class="stepkovani-gallery" aria-label="Galerie štěpkování">
+                    <img id="stepkovani-gallery-image" src="../assets/stepkovani_mobil.jpg" alt="Štěpkování">
+                    <button class="stepkovani-gallery-button stepkovani-gallery-button-prev" id="stepkovani-gallery-prev" type="button" aria-label="Předchozí fotografie">‹</button>
+                    <button class="stepkovani-gallery-button" id="stepkovani-gallery-next" type="button" aria-label="Další fotografie">›</button>
+                </div>
+                <p>Nabízíme profesionální <strong>štěpkování větví, náletových dřevin a dřevního odpadu</strong> po ořezech, kácení i údržbě pozemků. Službu poskytujeme pro <strong>firmy, obce i soukromé osoby</strong> v rámci Moravskoslezského kraje.</p>
+                <p><strong>Nabízené služby:</strong></p>
+                <p style="margin-left: 40px;">• štěpkování větví po ořezech a kácení</p>
+                <p style="margin-left: 40px;">• zpracování náletových dřevin</p>
+                <p style="margin-left: 40px;">• odvoz a úklid dřevního odpadu</p>
+                <p style="margin-left: 40px;">• drcení materiálu přímo v areálu zákazníka</p>
+                <p style="margin-left: 40px;">• možnost ponechání štěpky k dalšímu využití</p>
+                <p style="margin-top: 20px; margin-bottom: 0; text-align: center;">
+                    <a href="https://forms.office.com/r/ndNVtQugi9" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #3a6620; color: #ffffff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 6px;">Poptávkový formulář</a>
+                </p>
+                <div class="stepkovani-clear" style="clear: both;"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="stepkovani-lightbox" id="stepkovani-lightbox" aria-hidden="true">
+        <button class="stepkovani-lightbox-close" type="button" id="stepkovani-lightbox-close" aria-label="Zavřít galerii">✕</button>
+        <button class="stepkovani-lightbox-nav stepkovani-lightbox-prev" type="button" id="stepkovani-lightbox-prev" aria-label="Předchozí fotka">‹</button>
+        <img class="stepkovani-lightbox-image" id="stepkovani-lightbox-image" alt="">
+        <button class="stepkovani-lightbox-nav stepkovani-lightbox-next" type="button" id="stepkovani-lightbox-next" aria-label="Další fotka">›</button>
+    </div>
+
+    <!-- PATIČKA -->
+    <footer>
+        <p>&copy; <span id="year"></span> Komunální Servis. Všechna práva vyhrazena.</p>
+    </footer>
+
+    <!-- SKRIPTY: menu a chování lišty -->
+    <script>
+        const stepkovaniGalleryImages = [
+            {
+                src: '../assets/stepkovani_mobil.jpg',
+                alt: 'Štěpkování'
+            },
+            {
+                src: '../assets/stepkovani_1_mobil.jpg',
+                alt: 'Štěpkování - další fotografie'
+            }
+        ];
+
+        const stepkovaniGalleryImage = document.getElementById('stepkovani-gallery-image');
+        const stepkovaniGalleryPrev = document.getElementById('stepkovani-gallery-prev');
+        const stepkovaniGalleryNext = document.getElementById('stepkovani-gallery-next');
+        const stepkovaniLightbox = document.getElementById('stepkovani-lightbox');
+        const stepkovaniLightboxImage = document.getElementById('stepkovani-lightbox-image');
+        const stepkovaniLightboxClose = document.getElementById('stepkovani-lightbox-close');
+        const stepkovaniLightboxPrev = document.getElementById('stepkovani-lightbox-prev');
+        const stepkovaniLightboxNext = document.getElementById('stepkovani-lightbox-next');
+        let stepkovaniGalleryIndex = 0;
+
+        function updateStepkovaniGallery() {
+            const currentImage = stepkovaniGalleryImages[stepkovaniGalleryIndex];
+            stepkovaniGalleryImage.src = currentImage.src;
+            stepkovaniGalleryImage.alt = currentImage.alt;
+            if (stepkovaniLightboxImage) {
+                stepkovaniLightboxImage.src = currentImage.src;
+                stepkovaniLightboxImage.alt = currentImage.alt;
+            }
+        }
+
+        function openStepkovaniLightbox() {
+            if (!stepkovaniLightbox) return;
+            updateStepkovaniGallery();
+            stepkovaniLightbox.classList.add('open');
+            stepkovaniLightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStepkovaniLightbox() {
+            if (!stepkovaniLightbox) return;
+            stepkovaniLightbox.classList.remove('open');
+            stepkovaniLightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function nextStepkovaniImage() {
+            stepkovaniGalleryIndex = (stepkovaniGalleryIndex + 1) % stepkovaniGalleryImages.length;
+            updateStepkovaniGallery();
+        }
+
+        function prevStepkovaniImage() {
+            stepkovaniGalleryIndex = (stepkovaniGalleryIndex - 1 + stepkovaniGalleryImages.length) % stepkovaniGalleryImages.length;
+            updateStepkovaniGallery();
+        }
+
+        if (stepkovaniGalleryImage) {
+            stepkovaniGalleryPrev?.addEventListener('click', () => {
+                prevStepkovaniImage();
+            });
+
+            stepkovaniGalleryNext.addEventListener('click', () => {
+                nextStepkovaniImage();
+            });
+
+            stepkovaniGalleryImage.addEventListener('click', openStepkovaniLightbox);
+
+            stepkovaniLightboxClose?.addEventListener('click', closeStepkovaniLightbox);
+            stepkovaniLightboxPrev?.addEventListener('click', prevStepkovaniImage);
+            stepkovaniLightboxNext?.addEventListener('click', nextStepkovaniImage);
+
+            stepkovaniLightbox?.addEventListener('click', (event) => {
+                if (event.target === stepkovaniLightbox) {
+                    closeStepkovaniLightbox();
+                }
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (!stepkovaniLightbox?.classList.contains('open')) {
+                    return;
+                }
+
+                if (event.key === 'Escape') {
+                    closeStepkovaniLightbox();
+                } else if (event.key === 'ArrowRight') {
+                    nextStepkovaniImage();
+                } else if (event.key === 'ArrowLeft') {
+                    prevStepkovaniImage();
+                }
+            });
+        }
+        // POZNÁMKA: Sdílená logika pro menu a dropdown stavy.
+        const topBar = document.querySelector('.top-bar');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+        const mobileQuery = window.matchMedia('(max-width: 1300px)');
+        const dropdownItems = document.querySelectorAll('.dropdown');
+
+        if (menuToggle && navbar) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = navbar.classList.toggle('mobile-open');
+                menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                if (!isOpen) {
+                    dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+                }
+            });
+        }
+
+        // Zavření menu při kliknutí vedle
+        document.addEventListener('click', (event) => {
+            if (!mobileQuery.matches) return;
+            
+            const isClickInsideNavbar = navbar && navbar.contains(event.target);
+            const isClickOnMenuToggle = menuToggle && menuToggle.contains(event.target);
+            
+            if (!isClickInsideNavbar && !isClickOnMenuToggle && navbar?.classList.contains('mobile-open')) {
+                navbar.classList.remove('mobile-open');
+                if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+                dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+            }
+        });
+
+        dropdownItems.forEach((item) => {
+            const trigger = item.querySelector('a');
+            if (!trigger) return;
+
+            trigger.addEventListener('click', (event) => {
+                if (!mobileQuery.matches) return;
+                event.preventDefault();
+
+                const wasOpen = item.classList.contains('mobile-open');
+                dropdownItems.forEach((dropdown) => dropdown.classList.remove('mobile-open'));
+
+                if (!wasOpen) {
+                    item.classList.add('mobile-open');
+                }
+            });
+        });
+
+        window.addEventListener('resize', () => {
+            if (!mobileQuery.matches) {
+                navbar?.classList.remove('mobile-open');
+                menuToggle?.setAttribute('aria-expanded', 'false');
+                dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+            }
+        });
+
+        function updateHeaderTransparency() {
+            if (window.scrollY > 5) {
+                topBar.classList.add('scrolled');
+            } else {
+                topBar.classList.remove('scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', updateHeaderTransparency);
+        updateHeaderTransparency();
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
+

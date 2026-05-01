@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7KPS3735Z"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-T7KPS3735Z');
+    </script>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kontakty - Komunální Servis</title>
+	<link rel="stylesheet" href="assets/styles.css">
+	<link rel="icon" type="image/png" href="assets/logo.png">
+	<script src="assets/adaptive-mobile-spacing.js" defer></script>
+	<!-- POZNÁMKA: Tento soubor řeší kontaktní stránku (sídlo firmy, kontaktní karta, mapa, responzivní pořadí bloků). -->
+	<style>
+		/* Jen tato stránka: bílé pozadí */
+		body {
+			background-color: #ffffff;
+		}
+
+		/* Zvětšení pouze obsahu na bílém pozadí */
+		#contact .content-container {
+			font-size: 19px;
+			line-height: 1.75;
+		}
+
+		#contact .content-container h2 {
+			font-size: 36px;
+			line-height: 1.2;
+		}
+
+		#contact .content-container p {
+			font-size: 19px;
+		}
+
+		#contact .content-container h2 {
+			font-size: 36px;
+			line-height: 1.2;
+		}
+
+		#contact .email-card {
+			margin-top: 14px;
+			padding: 12px 14px;
+			background: #f7f9fc;
+			border: 1px solid #d6dfeb;
+			border-left: 5px solid #3a6620;
+			border-radius: 10px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+		}
+
+		#contact .email-card h3 {
+			margin: 0 0 6px 0;
+			font-size: 18px;
+			line-height: 1.2;
+		}
+
+		#contact .email-card a {
+			font-weight: 700;
+			font-size: 19px;
+			word-break: break-word;
+		}
+
+		/* Menší řádkování jen pro text v obou kartičkách */
+		#contact .email-card p {
+			line-height: 1.35;
+			margin: 4px 0;
+		}
+
+		@media (max-width: 700px) {
+			#contact .content-container {
+				padding: 18px 14px !important;
+			}
+
+			#contact .contact-layout {
+				display: flex !important;
+				flex-direction: column;
+				gap: 16px;
+				align-items: stretch;
+			}
+
+			#contact .address-block {
+				display: contents;
+				transform: none !important;
+			}
+
+			#contact .address-card {
+				order: 2;
+			}
+
+			#contact .contact-card {
+				order: 1;
+				transform: none !important;
+				min-width: 100% !important;
+				width: 100% !important;
+				margin-top: 0 !important;
+			}
+
+			#contact .email-card {
+				width: 100%;
+				margin: 0 !important;
+				padding: 16px 14px !important;
+				text-align: center;
+			}
+
+			#contact .email-card h2,
+			#contact .email-card p,
+			#contact .email-card a {
+				text-align: center;
+			}
+
+			#contact .map-block {
+				order: 3;
+				margin-top: 0 !important;
+				width: 100%;
+			}
+
+			#contact .map-block iframe {
+				height: 320px;
+				display: block;
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- HLAVIČKA: logo + navigace -->
+	<header class="top-bar">
+		<div class="container">
+			<div class="logo-section">
+				<div class="logo">
+					<a href="index.html" aria-label="Hlavní stránka">
+						<img src="assets/logo.png" alt="Logo" class="logo-img">
+					</a>
+				</div>
+				<h1 class="company-name"><a href="index.html" style="color: inherit; text-decoration: none;">komunální servis</a></h1>
+				<div class="header-phone">
+					<a href="tel:+420602504964" class="phone-number">Tel: 602 504 964</a>
+				</div>
+			</div>
+			<a href="contact.html" class="mobile-contact-btn">Kontakt</a>
+			<button class="menu-toggle" aria-label="Otevřít menu" aria-expanded="false"></button>
+			<nav class="navbar">
+				<ul style="list-style: none; margin: 0; margin-right: 0; padding: 0; display: flex; align-items: center;">
+					<li><a href="index.html#about-us" style="padding: 10px 15px; text-decoration: none; display: block;">O nás</a></li>
+					<li class="dropdown" style="position: relative;">
+						<a href="#" onclick="return false" style="padding: 10px 15px; text-decoration: none; display: flex; align-items: center; gap: 5px;">Práce <span style="font-size: 18px; opacity: 0.95; display: flex; align-items: center;">▾</span></a>
+						<ul class="dropdown-menu" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0;">
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/prace_s_malotraktorem.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Práce s malotraktorem<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/seceni_a_mulcovani.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Sekání a mulčování<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/rotovace_a_vertikutace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Rotovace a vertikutace<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/stepkovani.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Štěpkování<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/zahradnicke_a_sadarske_prace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Zahradnické a sadařské práce<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/malirske_prace.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Malířské práce<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown" style="position: relative;">
+						<a href="#" onclick="return false" style="padding: 10px 15px; text-decoration: none; display: flex; align-items: center; gap: 5px;">Úklidy a údržba <span style="font-size: 18px; opacity: 0.95; display: flex; align-items: center;">▾</span></a>
+						<ul class="dropdown-menu" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0;">
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/uklidy_a_vyklizeni.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Úklidy a vyklízení<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/uklid_snehu.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Úklid sněhu<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+							<li style="margin: 4px; padding: 0px;">
+								<a href="prace/komplexni_udrzba_firemnich_arealu.html" style="padding: 5px 15px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; line-height: 1.2;">Komplexní údržba firemních areálů<span style="margin-left: 10px; font-weight: bold; font-size: 18px;">></span></a>
+							</li>
+						</ul>
+					</li>
+					<li class="mobile-hide-contact"><a href="contact.html" style="padding: 10px 15px; text-decoration: none; display: block;">Kontakt</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- HLAVNÍ OBSAH STRÁNKY -->
+	<main>
+		<section class="content-section" id="contact">
+			<div class="content-container" style="padding: 28px 32px; border-radius: 5px; max-width: 1100px; margin: 40px auto; background: rgba(255,255,255,0.95);">
+				<div class="contact-layout" style="display: flex; gap: 30px; align-items: flex-start;">
+					<!-- Levá sekce: Kontakt -->
+					<div class="address-block" style="flex: 2; min-width: 0; transform: none;">
+						<div class="email-card address-card" style="margin-top: 0; padding: 14px 16px;">
+							<h2 style="margin-top: 0;">Sídlo firmy</h2>
+							<p><strong>Adresa:</strong> B. Němcové 47, 746 01 Opava</p>
+							<p><strong>IČ:</strong> 69585334</p>
+							<p><strong>DIČ:</strong> 7204075472</p>
+						</div>
+						<!-- Mapa pod kontaktem -->
+						<div class="map-block" style="margin-top:20px;">
+							<iframe 
+								src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Komun%C3%A1ln%C3%AD+servis,+B.+N%C4%9Bmcov%C3%A9+47,+746+01+Opava&center=49.93102242780343,17.913435652972442&zoom=18&maptype=satellite" 
+								width="100%" 
+								height="400" 
+								style="border:0; border-radius: 8px;" 
+								allowfullscreen="" 
+								loading="lazy" 
+								referrerpolicy="no-referrer-when-downgrade">
+							</iframe>
+						</div>
+					</div>
+
+					<!-- Pravá sekce: Kontakt v kartičce -->
+					<div class="email-card contact-card" style="flex: 1; min-width: 260px; margin-top: 0; transform: none; padding: 14px 16px;">
+						<h2 style="margin-top: 0;">Kontakt</h2>
+						<p><strong>Jméno:</strong> David Slavata</p>
+						<p><strong>Tel:</strong> <a href="tel:+420602504964">602 504 964</a></p>
+						<p><strong>Email:</strong> komunalniservis@email.cz</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- PATIČKA -->
+	<footer>
+		<p>&copy; <span id="year"></span> Komunální Servis. Všechna práva vyhrazena.</p>
+	</footer>
+
+	<!-- SKRIPTY: menu a chování lišty -->
+	<script>
+		// POZNÁMKA: Tento skript řeší pouze hlavičku/menu (toggle, dropdowny, zavírání po kliknutí mimo menu) a rok v patičce.
+		const topBar = document.querySelector('.top-bar');
+		const menuToggle = document.querySelector('.menu-toggle');
+		const navbar = document.querySelector('.navbar');
+		const mobileQuery = window.matchMedia('(max-width: 1300px)');
+		const dropdownItems = document.querySelectorAll('.dropdown');
+
+		if (menuToggle && navbar) {
+			menuToggle.addEventListener('click', () => {
+				const isOpen = navbar.classList.toggle('mobile-open');
+				menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+				if (!isOpen) {
+					dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+				}
+			});
+		}
+
+		// Zavření menu při kliknutí vedle
+		document.addEventListener('click', (event) => {
+			if (!mobileQuery.matches) return;
+			
+			const isClickInsideNavbar = navbar && navbar.contains(event.target);
+			const isClickOnMenuToggle = menuToggle && menuToggle.contains(event.target);
+			
+			if (!isClickInsideNavbar && !isClickOnMenuToggle && navbar?.classList.contains('mobile-open')) {
+				navbar.classList.remove('mobile-open');
+				if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+				dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+			}
+		});
+
+		dropdownItems.forEach((item) => {
+			const trigger = item.querySelector('a');
+			if (!trigger) return;
+
+			trigger.addEventListener('click', (event) => {
+				if (!mobileQuery.matches) return;
+				event.preventDefault();
+
+				const wasOpen = item.classList.contains('mobile-open');
+				dropdownItems.forEach((dropdown) => dropdown.classList.remove('mobile-open'));
+
+				if (!wasOpen) {
+					item.classList.add('mobile-open');
+				}
+			});
+		});
+
+		window.addEventListener('resize', () => {
+			if (!mobileQuery.matches) {
+				navbar?.classList.remove('mobile-open');
+				menuToggle?.setAttribute('aria-expanded', 'false');
+				dropdownItems.forEach((item) => item.classList.remove('mobile-open'));
+			}
+		});
+
+		function updateHeaderTransparency() {
+			if (!topBar) return;
+			if (window.scrollY > 5) {
+				topBar.classList.add('scrolled');
+			} else {
+				topBar.classList.remove('scrolled');
+			}
+		}
+
+		window.addEventListener('scroll', updateHeaderTransparency);
+		updateHeaderTransparency();
+
+		document.getElementById('year').textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
+
+
